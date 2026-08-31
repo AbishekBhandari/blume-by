@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FBF3EF;
+  color: #382C28;
+}
+
+/* The wire-line divider: a single hand-drawn stroke that runs between
+   sections, standing in for the pipe-cleaner wire the flowers are made
+   from. It is the one recurring signature element of the site. */
+.wire-divider {
+  display: block;
+  width: 100%;
+  height: 28px;
+  overflow: visible;
+}
+
+.wire-divider path {
+  fill: none;
+  stroke: #C99A4B;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Underline used on nav links / logo: a short wiggly wire stroke that
+   draws itself in on hover, instead of a flat straight underline. */
+.wire-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.wire-underline svg {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 8px;
+  opacity: 0;
+  transform: scaleX(0.85);
+  transform-origin: left;
+  transition: opacity 0.25s ease, transform 0.35s ease;
+}
+
+.wire-underline:hover svg,
+.wire-underline:focus-visible svg {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wire-underline svg {
+    transition: none;
+  }
+}
+
+/* Hero flower: each stroke "draws" itself in like the wire being twisted
+   into shape, staggered petal by petal, then the finished flower head
+   sways gently — as if caught in a light breeze. */
+@keyframes wire-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flower-sway {
+  0%,
+  100% {
+    transform: rotate(-2.5deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes bloom-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-flower-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: wire-draw 0.7s ease-out forwards;
+  animation-delay: var(--draw-delay, 0s);
+}
+
+.hero-flower-bloom {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bloom-in 0.4s ease-out forwards;
+  animation-delay: var(--draw-delay, 0s);
+}
+
+.hero-flower-sway {
+  transform-box: fill-box;
+  transform-origin: 50% 60%;
+  animation: flower-sway 4.5s ease-in-out infinite;
+  animation-delay: 2.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-flower-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .hero-flower-bloom {
+    animation: none;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .hero-flower-sway {
+    animation: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #3D5A45;
+  outline-offset: 3px;
+}
