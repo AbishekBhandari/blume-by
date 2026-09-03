@@ -137,12 +137,9 @@ export default function HomePage() {
             Flowers that never wilt, wired by hand.
           </h1>
           <p className="mt-6 max-w-md font-body text-ink/70">
-            Every stem in a Blume by Binu bouquet is shaped from fuzzy wire —
+            Every stem in a Blume by Binu bouquet is shaped from fuzzy wire-
             twisted, bent, and finished by hand. No water needed, no petals
             fall, just a small bit of garden that lasts.
-          </p>
-          <p className="mt-3 max-w-md font-body text-sm italic text-ink/50">
-            Pictured here: the tiger lily — Binu's favorite.
           </p>
           <div className="mt-8 flex gap-4">
             <Link
