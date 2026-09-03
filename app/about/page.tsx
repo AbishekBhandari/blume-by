@@ -106,8 +106,7 @@ export default function AboutPage() {
         >
           Instagram
         </a>{" "}
-        or reach out over WhatsApp. Add your WhatsApp number here before
-        launch.
+        or reach out over WhatsApp.
       </p>
     </section>
   );
